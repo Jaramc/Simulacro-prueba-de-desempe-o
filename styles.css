@@ -1,0 +1,58 @@
+/* Estilos básicos */
+body {
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Logo circular simple */
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Card simple */
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+}
+
+/* Botón verde simple */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 6px;
+    font-weight: normal;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Inputs básicos */
+.form-control, .form-select {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}

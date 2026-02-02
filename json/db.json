@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@resto.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "9179",
+      "name": "Ximena",
+      "email": "xime@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "8086",
+      "name": "Ximena Jaramillo Cardenas",
+      "email": "ximena@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "cbe0",
+      "name": "Ximena Jaramillo Cardenas",
+      "email": "Tomacito@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "bee4",
+      "name": "Ximena Jaramillo Cardenas",
+      "email": "ximen@gmail.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Classic Beef Burger",
+      "price": 8.99,
+      "image": "images/burger1.jpg",
+      "category": "Burgers",
+      "available": true
+    },
+    {
+      "id": "2",
+      "name": "Double Bacon Melt",
+      "price": 12.5,
+      "image": "images/burger2.jpg",
+      "category": "Burgers",
+      "available": true
+    },
+    {
+      "id": "3",
+      "name": "Golden Fries",
+      "price": 3.99,
+      "image": "images/fries.jpg",
+      "category": "Sides",
+      "available": true
+    },
+    {
+      "id": "4",
+      "name": "Cola Zero",
+      "price": 2.5,
+      "image": "images/cola.jpg",
+      "category": "Drinks",
+      "available": true
+    },
+    {
+      "id": "5",
+      "name": "Donut Box",
+      "price": 6,
+      "image": "images/donut.jpg",
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "id": "6",
+      "name": "Pepperoni Slice",
+      "price": 4.5,
+      "image": "images/pizza.jpg",
+      "category": "Pizza",
+      "available": true
+    }
+  ],
+  "orders": []
+}

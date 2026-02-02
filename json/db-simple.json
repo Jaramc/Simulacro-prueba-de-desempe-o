@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@resto.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Hamburguesa Clásica",
+      "price": 8.99,
+      "category": "Hamburguesas",
+      "image": "🍔"
+    },
+    {
+      "id": 2,
+      "name": "Pizza Pepperoni",
+      "price": 12.50,
+      "category": "Pizzas",
+      "image": "🍕"
+    },
+    {
+      "id": 3,
+      "name": "Coca Cola",
+      "price": 2.50,
+      "category": "Bebidas",
+      "image": "🥤"
+    },
+    {
+      "id": 4,
+      "name": "Papas Fritas",
+      "price": 3.99,
+      "category": "Acompañamientos",
+      "image": "🍟"
+    },
+    {
+      "id": 5,
+      "name": "Donas",
+      "price": 5.50,
+      "category": "Postres",
+      "image": "🍩"
+    },
+    {
+      "id": 6,
+      "name": "Pollo Frito",
+      "price": 9.99,
+      "category": "Hamburguesas",
+      "image": "🍗"
+    }
+  ],
+  "orders": []
+}

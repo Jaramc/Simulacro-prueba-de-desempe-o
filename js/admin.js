@@ -1,12 +1,10 @@
-// Variables globales
 let currentAdmin = null;
 let orders = [];
 let products = [];
 
-// Verificar autenticación al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
-    convertOrderStatus(); // Convertir estados antiguos
+    convertOrderStatus();
     loadOrders();
     loadProducts();
     updateDashboard();
@@ -14,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     displayProducts();
 });
 
-// Verificar que el usuario sea admin
 function checkAuthentication() {
     const session = localStorage.getItem('session');
     if (!session) {
@@ -33,7 +30,6 @@ function checkAuthentication() {
     document.getElementById('adminName').textContent = 'Welcome, ' + currentAdmin.name + '!';
 }
 
-// Convertir estados de orden en español a inglés
 function convertOrderStatus() {
     const savedOrders = localStorage.getItem('orders');
     if (savedOrders) {
@@ -62,30 +58,24 @@ function convertOrderStatus() {
     }
 }
 
-// Cargar órdenes desde localStorage
 function loadOrders() {
     const savedOrders = localStorage.getItem('orders');
     orders = savedOrders ? JSON.parse(savedOrders) : [];
 }
 
-// Cargar productos desde localStorage
 function loadProducts() {
     const savedProducts = localStorage.getItem('products');
     products = savedProducts ? JSON.parse(savedProducts) : [];
 }
 
-// Actualizar métricas del dashboard
 function updateDashboard() {
     const today = new Date().toLocaleDateString();
     
-    // Total de órdenes
     document.getElementById('totalOrders').textContent = orders.length;
     
-    // Órdenes pending
     const pendingCount = orders.filter(order => order.status === 'pending').length;
     document.getElementById('pendingOrders').textContent = pendingCount;
     
-    // Ingresos de hoy
     let todayRevenue = 0;
     orders.forEach(order => {
         if (order.createdAt.includes(today)) {
@@ -94,12 +84,10 @@ function updateDashboard() {
     });
     document.getElementById('todayRevenue').textContent = '$' + todayRevenue.toFixed(2);
     
-    // Órdenes recientes (últimas 5)
     const recentCount = Math.min(orders.length, 5);
     document.getElementById('recentOrders').textContent = recentCount;
 }
 
-// Mostrar órdenes en la tabla
 function displayOrders() {
     const ordersTable = document.getElementById('ordersTable');
     ordersTable.innerHTML = '';
@@ -119,7 +107,6 @@ function displayOrders() {
     });
 }
 
-// Obtener color para el badge del status
 function getStatusColor(status) {
     switch(status) {
         case 'pending': return 'warning';
@@ -130,7 +117,6 @@ function getStatusColor(status) {
     }
 }
 
-// Ver detalle de una orden
 function viewOrder(orderId) {
     const order = orders.find(o => o.id === orderId);
     if (!order) return;
@@ -169,7 +155,6 @@ function viewOrder(orderId) {
     document.getElementById('orderDetail').innerHTML = detailHtml;
 }
 
-// Actualizar status de orden
 function updateOrderStatus(orderId) {
     const newStatus = document.getElementById('statusSelect').value;
     const order = orders.find(o => o.id === orderId);
@@ -178,16 +163,14 @@ function updateOrderStatus(orderId) {
         order.status = newStatus;
         localStorage.setItem('orders', JSON.stringify(orders));
         
-        // Refrescar vista
         displayOrders();
         updateDashboard();
-        viewOrder(orderId); // Mantener el detalle visible
+        viewOrder(orderId);
         
         alert('Order status updated successfully!');
     }
 }
 
-// Mostrar productos en la tabla
 function displayProducts() {
     const productsTable = document.getElementById('productsTable');
     productsTable.innerHTML = '';
@@ -207,7 +190,6 @@ function displayProducts() {
     });
 }
 
-// Manejar formulario de nuevo producto
 document.getElementById('productForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -216,7 +198,6 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
     const category = document.getElementById('productCategory').value;
     const image = document.getElementById('productImage').value.trim();
     
-    // Validación básica
     if (!name) {
         alert('Product name is required');
         return;
@@ -227,7 +208,6 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Crear nuevo producto
     const newProduct = {
         id: Date.now(),
         name: name,
@@ -239,14 +219,12 @@ document.getElementById('productForm').addEventListener('submit', function(e) {
     products.push(newProduct);
     localStorage.setItem('products', JSON.stringify(products));
     
-    // Refrescar vista
     displayProducts();
     document.getElementById('productForm').reset();
     
     alert('Product added successfully!');
 });
 
-// Eliminar producto
 function deleteProduct(productId) {
     if (confirm('Are you sure you want to delete this product?')) {
         products = products.filter(p => p.id !== productId);
@@ -256,7 +234,6 @@ function deleteProduct(productId) {
     }
 }
 
-// Cerrar sesión
 function logout() {
     if (confirm('Are you sure you want to logout?')) {
         localStorage.removeItem('session');

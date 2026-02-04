@@ -1,4 +1,3 @@
-// Código simple de principiante
 document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -6,7 +5,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    // Check if email exists
     const response = await fetch('http://localhost:3000/users');
     const users = await response.json();
     
@@ -15,12 +13,11 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         return;
     }
     
-    // Create user with automatic "user" role
     const newUser = {
         name: name,
         email: email,
         password: password,
-        role: 'user'  // AUTOMATIC
+        role: 'user'
     };
     
     await fetch('http://localhost:3000/users', {

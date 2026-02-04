@@ -1,10 +1,8 @@
-// Variables básicas
 let currentUser = null;
 let products = [];
 let cart = [];
 let currentCategory = 'Todos';
 
-// Verificar si el usuario está logueado
 const session = localStorage.getItem('session');
 if (!session) {
     window.location.href = 'index.html';
@@ -16,7 +14,6 @@ if (!session) {
     document.getElementById('userName').textContent = currentUser.name;
 }
 
-// Cargar productos desde JSON Server
 async function loadProducts() {
     try {
         const response = await fetch('http://localhost:3000/products');
@@ -27,11 +24,9 @@ async function loadProducts() {
     }
 }
 
-// Mostrar productos (con filtro)
 function showProducts() {
     let productsToShow = products;
     
-    // Filtrar por categoría si no es "Todos"
     if (currentCategory !== 'Todos') {
         productsToShow = products.filter(p => p.category === currentCategory);
     }
@@ -66,11 +61,9 @@ function showProducts() {
     document.getElementById('productsDiv').innerHTML = html;
 }
 
-// Filtrar productos por categoría
 function filterProducts(category) {
     currentCategory = category;
     
-    // Actualizar botones activos
     document.querySelectorAll('.btn-group .btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.textContent === category) {
@@ -81,7 +74,6 @@ function filterProducts(category) {
     showProducts();
 }
 
-// Agregar al carrito
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const item = cart.find(c => c.id === productId);
@@ -94,7 +86,6 @@ function addToCart(productId) {
     showCart();
 }
 
-// Mostrar carrito
 function showCart() {
     if (cart.length === 0) {
         document.getElementById('cartDiv').innerHTML = 'Tu carrito está vacío';
@@ -127,13 +118,11 @@ function showCart() {
     document.getElementById('cartDiv').innerHTML = html;
 }
 
-// Remover del carrito
 function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     showCart();
 }
 
-// Crear pedido
 async function createOrder() {
     if (cart.length === 0) {
         alert('Tu carrito está vacío');
@@ -166,7 +155,6 @@ async function createOrder() {
     }
 }
 
-// Mostrar mis pedidos
 async function showMyOrders() {
     try {
         const response = await fetch('http://localhost:3000/orders');
@@ -213,17 +201,14 @@ async function showMyOrders() {
     }
 }
 
-// Volver al menú
 function showMenu() {
     document.getElementById('ordersDiv').style.display = 'none';
     document.querySelector('.row').style.display = 'flex';
 }
 
-// Cerrar sesión
 function logout() {
     localStorage.removeItem('session');
     window.location.href = 'index.html';
 }
 
-// Inicializar
 loadProducts();

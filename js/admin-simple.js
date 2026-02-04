@@ -1,7 +1,5 @@
-// Variables básicas
 let currentUser = null;
 
-// Verificar si el admin está logueado
 const session = localStorage.getItem('session');
 if (!session) {
     window.location.href = 'index.html';
@@ -13,7 +11,6 @@ if (!session) {
     document.getElementById('adminName').textContent = currentUser.name;
 }
 
-// Cargar datos del dashboard
 async function loadDashboard() {
     try {
         const response = await fetch('http://localhost:3000/orders');
@@ -34,7 +31,6 @@ async function loadDashboard() {
     }
 }
 
-// Mostrar órdenes
 function showOrders(orders) {
     let html = '';
     orders.forEach(order => {
@@ -78,7 +74,6 @@ function showOrders(orders) {
     document.getElementById('ordersList').innerHTML = html;
 }
 
-// Cambiar estado de pedido
 async function changeStatus(orderId, newStatus) {
     try {
         await fetch(`http://localhost:3000/orders/${orderId}`, {
@@ -92,7 +87,6 @@ async function changeStatus(orderId, newStatus) {
     }
 }
 
-// Mostrar formulario para agregar producto
 function showAddProduct() {
     const html = `
         <div class="card mt-3" id="addProductCard">
@@ -133,7 +127,6 @@ function showAddProduct() {
     document.getElementById('addProductDiv').innerHTML = html;
 }
 
-// Agregar producto
 async function addProduct(event) {
     event.preventDefault();
     
@@ -158,16 +151,13 @@ async function addProduct(event) {
     }
 }
 
-// Ocultar formulario de agregar producto
 function hideAddProduct() {
     document.getElementById('addProductDiv').innerHTML = '';
 }
 
-// Cerrar sesión
 function logout() {
     localStorage.removeItem('session');
     window.location.href = 'index.html';
 }
 
-// Inicializar
 loadDashboard();
